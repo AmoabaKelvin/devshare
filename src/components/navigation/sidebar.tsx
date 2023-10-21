@@ -9,8 +9,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { languages } from "@/data/dummy";
 import { cn } from "@/lib/utils";
@@ -44,7 +46,9 @@ const navigationLinks = [
 ];
 
 const Sidebar = () => {
+  const [languagesToDisplay, setLanguagesToDisplay] = useState(languages);
   const pathName = usePathname();
+
   return (
     <div className="sticky top-12 flex flex-col h-[80vh] w-64 bg-[#160F30] rounded-md p-4 backdrop-blur-lg">
       <Button className="bg-purple-600 rounded-md hover:bg-purple-700">
@@ -67,7 +71,19 @@ const Sidebar = () => {
       </nav>
       <h4 className="mt-6 text-sm font-medium leading-none">Browse By Tag: </h4>
       <ScrollArea className="p-3 mt-5 rounded-md bg-gray-950 h-72">
-        {languages.map((language) => (
+        <Input
+          className="sticky top-0 z-10 w-full mb-3 bg-transparent backdrop-blur-2xl focus-visible:ring-offset-0"
+          placeholder="Search for a tag"
+          onChange={(e) => {
+            const value = e.target.value;
+            setLanguagesToDisplay(
+              languages.filter((language) =>
+                language.toLowerCase().includes(value.toLowerCase())
+              )
+            );
+          }}
+        />
+        {languagesToDisplay.map((language) => (
           <Link
             href={`/snippets/${language}`}
             key={language}
