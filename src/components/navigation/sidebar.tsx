@@ -51,8 +51,8 @@ const Sidebar = () => {
 
   return (
     <div className="sticky top-12 flex flex-col h-[80vh] w-64 bg-[#160F30] rounded-md p-4 backdrop-blur-lg">
-      <Button className="bg-purple-600 rounded-md hover:bg-purple-700">
-        New Snippet
+      <Button className="bg-purple-600 rounded-md hover:bg-purple-700" asChild>
+        <Link href="/app/snippets/new">New Snippet</Link>
       </Button>
       <nav className="flex flex-col mt-6 space-y-5">
         {navigationLinks.map((link) => (
