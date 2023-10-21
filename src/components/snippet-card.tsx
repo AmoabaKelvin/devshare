@@ -30,7 +30,7 @@ const snippet = {
   date: "2021-01-01",
 };
 
-interface Snippet {
+export interface Snippet {
   author: string;
   description: string;
   code: string;
