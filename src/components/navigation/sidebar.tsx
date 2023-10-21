@@ -25,7 +25,7 @@ const navigationLinks = [
   },
   {
     name: "Snippets",
-    href: "/snippets",
+    href: "/app/snippets",
     Icon: <SquareDashedBottomCode size={24} />,
   },
   {
