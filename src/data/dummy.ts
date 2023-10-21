@@ -71,8 +71,7 @@ export const snippets = [
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
   return slug;
-}
-  `,
+}`,
     author: "Kelvin Amoaba",
     language: "typescript",
     tags: ["typescript", "slug", "slugify"],
