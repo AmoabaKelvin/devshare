@@ -7,7 +7,7 @@ const DesktopNavigationBar = () => {
     <div className="flex bg-[#160F30] justify-between items-center px-6 py-3 rounded-lg">
       <div className="flex items-center w-3/4">
         <span className="text-lg">DevShare</span>
-        <Input className="ml-40 w-1/2 bg-transparent border border-[#3d3d3d] focus-visible:ring-0 focus-visible:ring-offset-0" />
+        <Input className="ml-48 w-1/2 bg-transparent border border-[#3d3d3d] focus-visible:ring-0 focus-visible:ring-offset-0" />
       </div>
       <Avatar>
         <AvatarImage
