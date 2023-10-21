@@ -3,6 +3,7 @@
 import { Lightbulb, Save } from "lucide-react";
 import { useState } from "react";
 
+import CodePreviewComponent from "@/components/code-preview";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -12,8 +13,6 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-
-import CodeComponent from "./code-component";
 
 const snippet = {
   description:
@@ -72,8 +71,11 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
       </CardHeader>
       <CardContent>
         <p className="mb-3 text-sm">{snippet.description}</p>
-        <div className="overflow-y-auto no-scrollbar h-max max-h-64">
-          <CodeComponent snippet={snippet} />
+        <div className="overflow-y-auto rounded-lg no-scrollbar h-max max-h-64">
+          <CodePreviewComponent
+            language={snippet.language}
+            code={snippet.code}
+          />
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
