@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DevShare - Code Snippet Sharing Platform",
-  description: "DevShare is a code snippet sharing platform for developers to share, discuss, and collaborate on code snippets. Join the community and improve your coding skills.",
+  description:
+    "DevShare is a code snippet sharing platform for developers to share, discuss, and collaborate on code snippets. Join the community and improve your coding skills.",
 };
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`h-screen ${inter.className}`}>{children}</body>
     </html>
   );
 }
