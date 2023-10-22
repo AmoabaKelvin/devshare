@@ -17,7 +17,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { languages } from "@/data/dummy";
 import { cn } from "@/lib/utils";
 
-const navigationLinks = [
+export const navigationLinks = [
   {
     name: "Discover",
     href: "/app",
