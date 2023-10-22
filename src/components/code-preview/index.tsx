@@ -20,7 +20,7 @@ const CodePreviewComponent = ({
   };
 
   return (
-    <div className="relative">
+    <div className="relative text-xs md:text-base">
       <SyntaxHighlighter
         language={language}
         showLineNumbers={true}
