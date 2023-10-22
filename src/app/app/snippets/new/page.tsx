@@ -1,13 +1,13 @@
 "use client";
 
+import CodeEditor from "@uiw/react-textarea-code-editor";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import CodePreviewComponent from "@/components/code-preview";
+import SnippetCard from "@/components/snippet-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
 import { LanguageSelectionComboBox } from "./_components/language-selection";
 
@@ -51,10 +51,17 @@ const CreateSnippetPage = () => {
           <Label htmlFor="description">Enter your snippet code</Label>
           <LanguageSelectionComboBox onSelect={handleLanguageSelection} />
         </div>
-        <Textarea
-          className="bg-transparent border-purple-400"
-          rows={12}
-          {...register("code", { required: true })}
+        <CodeEditor
+          value={watch("code")}
+          onChange={(e) => setValue("code", e.target.value)}
+          placeholder="Enter your snippet code"
+          className="min-h-[300px] bg-transparent border-purple-400 rounded-md"
+          language={watch("language")}
+          padding={10}
+          style={{
+            fontSize: 15,
+            fontFamily: '"Fira code", "Fira Mono", monospace',
+          }}
         />
       </div>
       <div className="flex flex-col gap-2">
@@ -62,6 +69,7 @@ const CreateSnippetPage = () => {
         <Input
           placeholder="Tags"
           className="bg-transparent border-purple-400"
+          {...register("tags", { required: true })}
         />
       </div>
       <div className="flex justify-end gap-4">
@@ -78,9 +86,19 @@ const CreateSnippetPage = () => {
       </div>
 
       {viewPreview && (
-        <CodePreviewComponent
-          code={watch("code")}
-          language={watch("language")}
+        // <CodePreviewComponent
+        //   code={watch("code")}
+        //   language={watch("language")}
+        // />
+        <SnippetCard
+          snippet={{
+            author: "test",
+            description: watch("description"),
+            language: watch("language"),
+            code: watch("code"),
+            tags: watch("tags").split(","),
+            date: "22 Oct 2023",
+          }}
         />
       )}
     </form>
