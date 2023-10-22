@@ -1,6 +1,8 @@
 "use client";
 
-import CodeEditor from "@uiw/react-textarea-code-editor";
+// import CodeEditor from "@uiw/react-textarea-code-editor";
+import "@uiw/react-textarea-code-editor/dist.css";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -17,6 +19,11 @@ type Inputs = {
   code: string;
   tags: string;
 };
+
+const CodeEditor = dynamic(
+  () => import("@uiw/react-textarea-code-editor").then((mod) => mod.default),
+  { ssr: false }
+);
 
 const CreateSnippetPage = () => {
   const [viewPreview, setViewPreview] = useState(false);
