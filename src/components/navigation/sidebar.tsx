@@ -9,10 +9,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { languages } from "@/data/dummy";
 import { cn } from "@/lib/utils";
 
 import BrowseByTag from "./sections/browse-by-tag";
@@ -46,7 +44,6 @@ export const navigationLinks = [
 ];
 
 const Sidebar = () => {
-  const [languagesToDisplay, setLanguagesToDisplay] = useState(languages);
   const pathName = usePathname();
 
   return (
