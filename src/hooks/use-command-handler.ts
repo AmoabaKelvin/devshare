@@ -1,4 +1,13 @@
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+
+const availableRoutes = [
+  "/",
+  "/app/snippets",
+  "app/profile",
+  "settings",
+  "logout",
+];
 
 interface OutPut {
   command: string;
@@ -6,6 +15,7 @@ interface OutPut {
 }
 
 export default function useCommandHandler() {
+  const router = useRouter();
   const [command, setCommand] = useState("");
   const [output, setOutput] = useState<OutPut[]>([]);
 
@@ -44,12 +54,10 @@ export default function useCommandHandler() {
 
       case "ls":
         return superCommandHandler([
-          "README.md",
-          "package.json",
-          "node_modules",
-          "src",
-          "public",
-          "yarn.lock",
+          "Dijkstra's Algorithm in C++",
+          "Finding a node in a binary tree in Java",
+          "Sorting an array in JavaScript",
+          "Quick hack to get the most occurring element in an array in Python",
         ]);
 
       case "date":
@@ -62,15 +70,32 @@ export default function useCommandHandler() {
         return superCommandHandler([new Date().toLocaleString()]);
 
       case "whoami":
-        return superCommandHandler(["You are a developer."]);
+        return superCommandHandler(["KelvinAmoaba"]);
 
       case "pwd":
-        return superCommandHandler(["/home/developer"]);
+        return superCommandHandler(["/home/kelvinamoaba"]);
 
       case "uname":
         return superCommandHandler(["Linux"]);
 
       default:
+        if (command.includes("mv")) {
+          const route = command.split(" ")[1];
+
+          if (route === "/" || route === "..") {
+            superCommandHandler([`\nNavigating to ${route}...`]);
+            return router.push(route === "/" ? "/app" : ".");
+          }
+
+          const actualRoute = availableRoutes.find((r) => r.includes(route));
+          if (actualRoute) {
+            superCommandHandler([`\nNavigating to ${actualRoute}...`]);
+            return router.push(actualRoute);
+          }
+
+          return superCommandHandler([`cd: no such route: ${route}`]);
+        }
+
         if (command.includes("+")) {
           const [first, second] = command.split("+");
           const result = parseInt(first) + parseInt(second);
