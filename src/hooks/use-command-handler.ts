@@ -4,7 +4,7 @@ import { useState } from "react";
 const availableRoutes = [
   "/",
   "/app/snippets",
-  "app/profile",
+  "/app/profile",
   "settings",
   "logout",
 ];
