@@ -33,7 +33,7 @@ export const navigationLinks = [
   },
   {
     name: "Profile",
-    href: "/profile",
+    href: "/app/profile",
     Icon: <User size={24} />,
   },
   {
