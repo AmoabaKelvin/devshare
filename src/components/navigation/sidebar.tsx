@@ -22,13 +22,13 @@ export const navigationLinks = [
     Icon: <Compass size={24} />,
   },
   {
-    name: "Snippets",
+    name: "My Snippets",
     href: "/app/snippets",
     Icon: <SquareDashedBottomCode size={24} />,
   },
   {
     name: "Saved Snippets",
-    href: "/bookmarks",
+    href: "/app/snippets/saved",
     Icon: <SaveAll size={24} />,
   },
   {
