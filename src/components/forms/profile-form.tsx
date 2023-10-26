@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useFieldArray, useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -17,7 +16,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
@@ -31,11 +29,6 @@ const profileFormSchema = z.object({
     .max(30, {
       message: "Username must not be longer than 30 characters.",
     }),
-  email: z
-    .string({
-      required_error: "Please select an email to display.",
-    })
-    .email(),
   bio: z.string().max(160).min(4),
   urls: z
     .array(
@@ -103,35 +96,12 @@ export function ProfileForm() {
                 <Input
                   placeholder="shadcn"
                   {...field}
-                  className="bg-transparent border-purple-400"
+                  className="text-white bg-transparent border-purple-400"
                 />
               </FormControl>
               <FormDescription className="text-slate-300">
                 This is your public display name. It can be your real name or a
                 pseudonym. You can only change this once every 30 days.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Email</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <Input
-                    placeholder=""
-                    {...field}
-                    className="bg-transparent border-purple-400"
-                  />
-                </FormControl>
-              </Select>
-              <FormDescription className="text-slate-300">
-                You can manage verified email addresses in your{" "}
-                <Link href="/examples/forms">email settings</Link>.
               </FormDescription>
               <FormMessage />
             </FormItem>
