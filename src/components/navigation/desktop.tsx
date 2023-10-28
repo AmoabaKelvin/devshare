@@ -19,9 +19,12 @@ const DesktopNavigationBar = () => {
   return (
     <>
       <div className="flex bg-[#160F30] justify-between items-center px-3 md:px-6 py-3 rounded-lg">
-        <div className="flex items-center w-3/4">
+        <div className="flex items-center w-3/4 lg:w-full">
           <span className="text-lg">DevShare</span>
-          <Input className="hidden md:block ml-48 w-1/2 bg-transparent border border-[#3d3d3d] focus-visible:ring-0 focus-visible:ring-offset-0" />
+          <Input
+            className="hidden md:block ml-48 w-1/2 lg:w-[61%] bg-transparent border border-[#3d3d3d] focus-visible:ring-0 focus-visible:ring-offset-0"
+            placeholder="Search for snippets"
+          />
         </div>
         <Avatar>
           <AvatarImage
