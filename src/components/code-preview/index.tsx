@@ -1,5 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { ClipBoardIcon } from "@/components/code-preview/copy";
 import useClipboard from "@/hooks/use-clipboard";
@@ -20,7 +20,7 @@ const CodePreviewComponent = ({
       <SyntaxHighlighter
         language={language}
         showLineNumbers={true}
-        style={atomOneDark}
+        style={monokai}
       >
         {code}
       </SyntaxHighlighter>
