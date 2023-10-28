@@ -21,7 +21,7 @@ const SavedSnippets = ({ snippet }: { snippet: Snippet }) => {
           <span className="hover:cursor-pointer">{snippet.description}</span>
           <div className="flex items-center gap-2 mt-2 text-sm">
             <span className="text-gray-400"> by </span>
-            <span className="text-purple-400">{snippet.author}</span>
+            <span className="text-purple-400">{snippet.author.name}</span>
             <span className="text-gray-400"> • </span>
             <span className="text-gray-400"> 1 month ago</span>
 
