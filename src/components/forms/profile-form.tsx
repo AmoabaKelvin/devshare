@@ -75,117 +75,119 @@ export function ProfileForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 text-black"
-      >
-        <div>
-          <h2 className="text-2xl text-white">Your DevShare Profile</h2>
-          <p className="text-slate-300">
-            Some of this information will be visible to the public.
-          </p>
-        </div>
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="shadcn"
-                  {...field}
-                  className="text-white bg-transparent border-purple-400"
-                />
-              </FormControl>
-              <FormDescription className="text-slate-300">
-                This is your public display name. It can be your real name or a
-                pseudonym. You can only change this once every 30 days.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="bio"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Bio</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Tell us a little bit about yourself"
-                  className="text-white bg-transparent border-purple-400 resize-none"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription className="text-slate-300">
-                You can <span>@mention</span> other users and organizations to
-                link to them.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div>
-          {fields.map((field, index) => (
-            <FormField
-              control={form.control}
-              key={field.id}
-              name={`urls.${index}.value`}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel
-                    className={cn(index !== 0 && "sr-only", "text-white")}
-                  >
-                    URLs
-                  </FormLabel>
-                  <FormDescription
-                    className={cn(index !== 0 && "sr-only", "text-slate-300")}
-                  >
-                    Add links to your website, blog, or social media profiles.
-                  </FormDescription>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      className="text-white bg-transparent border-purple-400"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          ))}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-2"
-            onClick={() => append({ value: "" })}
-          >
-            Add URL
-          </Button>
-        </div>
-        <div className="flex space-x-2 text-white items-top">
-          <Checkbox id="terms1" className="border-white" />
-          <div className="grid gap-1.5 leading-none">
-            <label
-              htmlFor="terms1"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Connect to GitHub
-            </label>
-            <p className="text-sm text-slate-300">
-              Connect your GitHub account to show your latest activity on your
-              profile.
+    <section className="grid grid-cols-1 md:grid-cols-9">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 text-black md:col-span-7"
+        >
+          <div>
+            <h2 className="text-2xl text-white">Your DevShare Profile</h2>
+            <p className="text-slate-300">
+              Some of this information will be visible to the public.
             </p>
           </div>
-        </div>
-        <Button type="submit" className="bg-purple-500 hover:bg-purple-600">
-          Update profile
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Username</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="shadcn"
+                    {...field}
+                    className="text-white bg-transparent border-purple-400"
+                  />
+                </FormControl>
+                <FormDescription className="text-slate-300">
+                  This is your public display name. It can be your real name or
+                  a pseudonym. You can only change this once every 30 days.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="bio"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Bio</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Tell us a little bit about yourself"
+                    className="text-white bg-transparent border-purple-400 resize-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription className="text-slate-300">
+                  You can <span>@mention</span> other users and organizations to
+                  link to them.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div>
+            {fields.map((field, index) => (
+              <FormField
+                control={form.control}
+                key={field.id}
+                name={`urls.${index}.value`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel
+                      className={cn(index !== 0 && "sr-only", "text-white")}
+                    >
+                      URLs
+                    </FormLabel>
+                    <FormDescription
+                      className={cn(index !== 0 && "sr-only", "text-slate-300")}
+                    >
+                      Add links to your website, blog, or social media profiles.
+                    </FormDescription>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="text-white bg-transparent border-purple-400"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            ))}
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="mt-2"
+              onClick={() => append({ value: "" })}
+            >
+              Add URL
+            </Button>
+          </div>
+          <div className="flex space-x-2 text-white items-top">
+            <Checkbox id="terms1" className="border-white" />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="terms1"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Connect to GitHub
+              </label>
+              <p className="text-sm text-slate-300">
+                Connect your GitHub account to show your latest activity on your
+                profile.
+              </p>
+            </div>
+          </div>
+          <Button type="submit" className="bg-purple-500 hover:bg-purple-600">
+            Update profile
+          </Button>
+        </form>
+      </Form>
+    </section>
   );
 }
