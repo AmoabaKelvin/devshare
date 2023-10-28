@@ -12,7 +12,7 @@ export default function DevShareAppLayout({
 }) {
   return (
     <main
-      className={`py-6 px-3 md:px-24 bg-[#202040] text-white ${firaCode.className}`}
+      className={`py-6 px-3 mt-6 md:px-24 bg-[#202040] text-white ${firaCode.className}`}
     >
       <DesktopNavigationBar />
       <div className="grid grid-cols-1 mt-10 md:grid-cols-5">
