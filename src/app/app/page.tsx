@@ -8,7 +8,7 @@ export default function DevShareApp() {
   return (
     // Reduce the cols when adding a sidebar in the future
     <div className="grid grid-cols-1 md:grid-cols-9">
-      <div className="mr-10 col-span-full md:col-span-7">
+      <div className="md:mr-10 col-span-full md:col-span-7">
         <div className="relative md:hidden">
           <Input
             className="w-full -mt-5 mb-4 bg-transparent border border-[#3d3d3d] focus-visible:ring-0 focus-visible:ring-offset-0"
@@ -34,7 +34,7 @@ export default function DevShareApp() {
           <SnippetCard key={id} snippet={snippet} />
         ))}
       </div>
-      <div className="col-span-2 bg-none"></div>
+      <div className="hidden md:col-span-2 bg-none"></div>
     </div>
   );
 }
