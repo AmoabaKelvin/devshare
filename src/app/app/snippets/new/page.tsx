@@ -99,7 +99,12 @@ const CreateSnippetPage = () => {
         // />
         <SnippetCard
           snippet={{
-            author: "test",
+            // author: "test",
+            author: {
+              name: "test",
+              github: "test",
+              joined: "test",
+            },
             description: watch("description"),
             language: watch("language"),
             code: watch("code"),
