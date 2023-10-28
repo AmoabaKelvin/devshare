@@ -1,6 +1,7 @@
 "use client";
 
 import { Lightbulb, Save } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 import CodePreviewComponent from "@/components/code-preview";
@@ -31,7 +32,11 @@ const snippet = {
 };
 
 export interface Snippet {
-  author: string;
+  author: {
+    name: string;
+    github: string;
+    joined: string;
+  };
   description: string;
   code: string;
   language: string;
@@ -57,13 +62,15 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
         <div className="flex items-center">
           <Avatar className="w-8 h-8 mr-2">
             <AvatarImage
-              src="https://github.com/AmoabaKelvin.png"
+              src={`https://github.com/${snippet.author.github}.png`}
               alt="AmoaKelvin"
             />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div className="flex flex-col justify-between">
-            <span className="text-sm">{snippet.author}</span>
+            <Link href={`/app/profile/${snippet.author.github}`}>
+              <span className="text-sm">{snippet.author.name}</span>
+            </Link>
             <span className="text-slate-400">{snippet.date}</span>
           </div>
         </div>
