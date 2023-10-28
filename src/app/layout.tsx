@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#202040] mt-6 ${inter.className}`}>
+      <body className={`bg-[#202040] ${inter.className}`}>
         <TerminalOverlayComponent />
         {children}
       </body>
