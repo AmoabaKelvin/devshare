@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1698869648347,
+      "tag": "0000_mushy_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1698870490686,
+      "tag": "0001_premium_loki",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1698874242897,
+      "tag": "0002_good_leper_queen",
+      "breakpoints": true
+    }
+  ]
+}
