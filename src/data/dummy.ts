@@ -87,6 +87,31 @@ export const snippets = [
   },
   {
     author: {
+      name: "Kelvin Amoaba",
+      github: "AmoabaKelvin",
+      joined: "2023-10-01",
+    },
+    description: "Check if a string is a palindrome",
+    code: `def isPalindrome(x: int) -> bool:
+    num_as_str = str(x)
+    middle = len(num_as_str) // 2
+    start = 0
+    end = len(num_as_str) - 1
+
+    while start != middle:
+        if num_as_str[start] != num_as_str[end]:
+            return False
+
+        start += 1
+        end -= 1
+
+    return True`,
+    language: "python",
+    tags: ["DSA", "palindrome"],
+    date: "2022-01-15",
+  },
+  {
+    author: {
       name: "Fiifi Amoah",
       github: "An0n-xen",
       joined: "2023-10-15",
