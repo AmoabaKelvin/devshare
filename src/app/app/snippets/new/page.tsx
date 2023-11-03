@@ -67,7 +67,7 @@ const CreateSnippetPage = () => {
           padding={10}
           style={{
             fontSize: 15,
-            fontFamily: '"Fira code", "Fira Mono", monospace',
+            fontFamily: "Fira Code",
           }}
         />
       </div>
