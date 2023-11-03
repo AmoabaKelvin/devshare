@@ -1,5 +1,8 @@
 # Devshare - Your beloved snippet sharing platform
 
+![img](https://i.imgur.com/KwHyzRJ.png)
+
+
 Devshare is a dedicated online code snippet sharing platform designed to make sharing and managing code snippets easy and efficient.
 
 ## What is a snippet?
