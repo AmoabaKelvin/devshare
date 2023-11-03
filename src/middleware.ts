@@ -7,5 +7,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ["/app/profile"],
+  matcher: ["/app/profile", "/app/snippets:path*"],
 };
