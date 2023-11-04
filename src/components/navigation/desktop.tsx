@@ -1,10 +1,10 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
 import { AnimatePresence } from "framer-motion";
 import { PanelRightOpen } from "lucide-react";
 import { useState } from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 
 import MobileSideBar from "./mobile";
@@ -26,13 +26,7 @@ const DesktopNavigationBar = () => {
             placeholder="Search for snippets"
           />
         </div>
-        <Avatar>
-          <AvatarImage
-            src="https://github.com/AmoabaKelvin.png"
-            alt="AmoaKelvin"
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <UserButton afterSignOutUrl="/app" />
         <div
           className="p-2 ml-3 bg-purple-800 rounded-md md:hidden"
           onClick={handleMobile}
