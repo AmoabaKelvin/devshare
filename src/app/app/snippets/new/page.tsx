@@ -1,6 +1,5 @@
 "use client";
 
-// import CodeEditor from "@uiw/react-textarea-code-editor";
 import "@uiw/react-textarea-code-editor/dist.css";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -39,7 +38,9 @@ const CreateSnippetPage = () => {
     setValue("language", value);
   };
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
