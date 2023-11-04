@@ -1,15 +1,18 @@
 "use client";
 
-import { Fira_Code } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import { usePathname } from "next/navigation";
-import { SessionProvider } from "next-auth/react";
 
 import DesktopNavigationBar from "../navigation/desktop";
 import Sidebar from "../navigation/sidebar";
 
-const pathsThatDoNotFollowTheLayout = ["/app/auth", "/"];
+const pathsThatDoNotFollowTheLayout = [
+  "/app/auth/sign-in",
+  "/",
+  "/app/auth/sign-up",
+];
 
-const firaCode = Fira_Code({ subsets: ["latin"] });
+const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 export const ClientProvider = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
@@ -20,7 +23,7 @@ export const ClientProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <main
-      className={`py-6 px-3 mt-6 md:px-24 bg-[#202040] text-white ${firaCode.className}`}
+      className={`py-6 px-3 mt-6 md:px-24 bg-[#202040] text-white ${robotoMono.className}`}
     >
       <DesktopNavigationBar />
       <div className="grid grid-cols-1 mt-10 md:grid-cols-5">
