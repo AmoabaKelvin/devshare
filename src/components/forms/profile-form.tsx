@@ -1,9 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTransition } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { updateProfile } from "@/app/_actions/profile";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -18,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+import { Profile } from "@/db/schema/users";
 import { cn } from "@/lib/utils";
 
 const profileFormSchema = z.object({
@@ -40,23 +43,24 @@ const profileFormSchema = z.object({
   connectGithub: z.boolean().optional(),
 });
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+export type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<ProfileFormValues> = {
-  bio: "I own a computer.",
-  urls: [
-    { value: "https://shadcn.com" },
-    { value: "http://twitter.com/shadcn" },
-  ],
+type InitialValues = Omit<Profile, "links" | "bio"> & {
+  urls: { value: string }[];
+  bio: string | undefined;
 };
 
-export function ProfileForm() {
+export function ProfileForm({
+  initialValues,
+}: {
+  initialValues?: InitialValues;
+}) {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
-    defaultValues,
+    defaultValues: initialValues,
     mode: "onChange",
   });
+  const [pending, startTransition] = useTransition();
 
   const { fields, append } = useFieldArray({
     name: "urls",
@@ -64,6 +68,9 @@ export function ProfileForm() {
   });
 
   function onSubmit(data: ProfileFormValues) {
+    startTransition(() => {
+      updateProfile(data);
+    });
     toast({
       title: "You submitted the following values:",
       description: (
@@ -183,7 +190,11 @@ export function ProfileForm() {
               </p>
             </div>
           </div>
-          <Button type="submit" className="bg-purple-500 hover:bg-purple-600">
+          <Button
+            type="submit"
+            className="bg-purple-500 hover:bg-purple-600"
+            disabled={pending}
+          >
             Update profile
           </Button>
         </form>
