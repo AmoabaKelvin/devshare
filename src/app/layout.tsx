@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { ClientProvider } from "@/components/providers/client-provider";
 import TerminalOverlayComponent from "@/components/terminal-overlay";
 
 import "@/styles/globals.css";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     "DevShare is a code snippet sharing platform for developers to share, discuss, and collaborate on code snippets. Join the community and improve your coding skills.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-[#202040] ${inter.className}`}>
         <TerminalOverlayComponent />
-        {children}
+        <ClientProvider>{children}</ClientProvider>
       </body>
     </html>
   );
