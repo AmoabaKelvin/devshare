@@ -5,8 +5,8 @@
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "editor.formatOnSave": true,
-    "source.organizeImports": false
+    "source.organizeImports": true,
+    "editor.formatOnSave": true
   },
   "cSpell.words": [
     "Devshare"
