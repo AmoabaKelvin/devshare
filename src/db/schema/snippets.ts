@@ -19,4 +19,4 @@ export const snippets = pgTable("snippet", {
     .$default(() => new Date()),
 });
 
-export type snippet = typeof snippets.$inferSelect;
+export type Snippet = typeof snippets.$inferSelect;
