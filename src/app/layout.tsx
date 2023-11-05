@@ -13,6 +13,25 @@ export const metadata: Metadata = {
   title: "DevShare - Code Snippet Sharing Platform",
   description:
     "DevShare is a code snippet sharing platform for developers to share, discuss, and collaborate on code snippets. Join the community and improve your coding skills.",
+  keywords: [
+    "devshare",
+    "devshare.dev/app",
+    "snippet",
+    "developer",
+    "developer community",
+    "code",
+    "code snippet sharing",
+    "code snippet sharing platform",
+  ],
+  themeColor: "#202040",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://devshare.dev",
+    title: "DevShare - Code Snippet Sharing Platform",
+    description:
+      "DevShare is a code snippet sharing platform for developers to share, discuss, and collaborate on code snippets. Join the community and improve your coding skills.",
+  },
 };
 
 export default async function RootLayout({
