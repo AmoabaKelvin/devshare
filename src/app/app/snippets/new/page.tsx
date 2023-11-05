@@ -1,14 +1,17 @@
 "use client";
 
 import "@uiw/react-textarea-code-editor/dist.css";
+import { Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { createSnippet } from "@/app/_actions/snippets";
 import SnippetCard from "@/components/snippet-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 
 import { LanguageSelectionComboBox } from "./_components/language-selection";
 
@@ -25,6 +28,8 @@ const CodeEditor = dynamic(
 );
 
 const CreateSnippetPage = () => {
+  const [loading, startTransition] = useTransition();
+  const { toast } = useToast();
   const [viewPreview, setViewPreview] = useState(false);
   const {
     register,
@@ -39,7 +44,14 @@ const CreateSnippetPage = () => {
   };
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    startTransition(async () => {
+      await createSnippet(data);
+      // TODO: HANDLE ERROR
+      // TODO: RESET FORM AND PUSH TO SNIPPET PAGE
+      toast({
+        title: "Snippet created successfully",
+      });
+    });
   };
 
   return (
@@ -90,7 +102,10 @@ const CreateSnippetPage = () => {
           {/* Preview Snippet */}
           {viewPreview ? "Close Preview" : "Preview Snippet"}
         </Button>
-        <Button className="bg-purple-600">Create Snippet</Button>
+        <Button className="bg-purple-600" disabled={loading}>
+          Create Snippet
+          {loading && <Loader2 className="ml-2 animate-spin" size={16} />}
+        </Button>
       </div>
 
       {viewPreview && (
