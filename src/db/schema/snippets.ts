@@ -1,4 +1,5 @@
 import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 import { users } from "./users";
 
@@ -20,3 +21,6 @@ export const snippets = pgTable("snippet", {
 });
 
 export type Snippet = typeof snippets.$inferSelect;
+export type SnippetInsert = typeof snippets.$inferInsert;
+
+export const insertSnippetSchema = createInsertSchema(snippets);
