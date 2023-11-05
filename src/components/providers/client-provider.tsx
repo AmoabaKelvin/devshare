@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import DesktopNavigationBar from "../navigation/desktop";
 import Sidebar from "../navigation/sidebar";
+import { Toaster } from "../ui/toaster";
 
 const pathsThatDoNotFollowTheLayout = [
   "/app/auth/sign-in",
@@ -25,6 +26,7 @@ export const ClientProvider = ({ children }: { children: React.ReactNode }) => {
     <main
       className={`py-6 px-3 mt-6 md:px-24 bg-[#202040] text-white ${robotoMono.className}`}
     >
+      <Toaster />
       <DesktopNavigationBar />
       <div className="grid grid-cols-1 mt-10 md:grid-cols-5">
         <Sidebar />
