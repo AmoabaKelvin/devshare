@@ -15,36 +15,22 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-const snippet = {
-  description:
-    "Function for generating slugs from a title and handling duplicates",
-  code: `const slugify = (title: string) => {
-    const slug = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, '');
-    return slug;
-  }
-  `,
-  language: "typescript",
-  tags: ["typescript", "slug", "slugify"],
-  date: "2021-01-01",
-};
-
 export interface Snippet {
   author: {
-    name: string;
-    github: string;
-    joined: string;
+    name: string | null;
+    github: string | null;
   };
-  description: string;
+  id: number;
+  userId: string;
+  description: string | null;
   code: string;
   language: string;
-  tags: string[];
-  date: string;
+  tags: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
+const SnippetCard = (snippet: Snippet) => {
   const [eureka, setEureka] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -65,13 +51,17 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
               src={`https://github.com/${snippet.author.github}.png`}
               alt="AmoaKelvin"
             />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>
+              {snippet.author.name?.charAt(0).toUpperCase()}
+            </AvatarFallback>
           </Avatar>
           <div className="flex flex-col justify-between">
             <Link href={`/app/profile/${snippet.author.github}`}>
               <span className="text-sm">{snippet.author.name}</span>
             </Link>
-            <span className="text-slate-400">{snippet.date}</span>
+            <span className="text-sm text-slate-400">
+              {new Date(snippet.createdAt).toDateString()}
+            </span>
           </div>
         </div>
         <span className="text-sm text-slate-400">{snippet.language}</span>
@@ -87,7 +77,7 @@ const SnippetCard = ({ snippet }: { snippet: Snippet }) => {
       </CardContent>
       <CardFooter className="flex justify-between">
         <div>
-          {snippet.tags.map((tag) => (
+          {snippet.tags.split(", ").map((tag) => (
             <Badge
               key={tag}
               className="mr-2 text-xs text-slate-400 border-slate-500 hover:cursor-pointer"
