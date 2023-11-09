@@ -11,6 +11,7 @@ const pathsThatDoNotFollowTheLayout = [
   "/app/auth/sign-in",
   "/",
   "/app/auth/sign-up",
+  "/404",
 ];
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
