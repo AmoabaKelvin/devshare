@@ -2,6 +2,7 @@
 
 import { Lightbulb, Save } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import CodePreviewComponent from "@/components/code-preview";
@@ -33,6 +34,7 @@ export interface Snippet {
 const SnippetCard = (snippet: Snippet) => {
   const [eureka, setEureka] = useState(false);
   const [saved, setSaved] = useState(false);
+  const router = useRouter();
 
   const handleEureka = () => {
     setEureka(!eureka);
@@ -43,7 +45,7 @@ const SnippetCard = (snippet: Snippet) => {
   };
 
   return (
-    <Card className="mt-6 text-white bg-gray-900 border-none">
+    <Card className="mt-6 text-white bg-gray-900 border-none group">
       <CardHeader className="flex flex-row justify-between">
         <div className="flex items-center">
           <Avatar className="w-8 h-8 mr-2">
@@ -67,7 +69,14 @@ const SnippetCard = (snippet: Snippet) => {
         <span className="text-sm text-slate-400">{snippet.language}</span>
       </CardHeader>
       <CardContent>
-        <p className="mb-3 text-sm">{snippet.description}</p>
+        <p
+          className="mb-3 text-sm duration-300 cursor-pointer group-hover:underline"
+          onClick={() => {
+            router.push(`/app/snippets/${snippet.id}`);
+          }}
+        >
+          {snippet.description}
+        </p>
         <div className="overflow-y-auto rounded-lg no-scrollbar h-max max-h-64">
           <CodePreviewComponent
             language={snippet.language}
