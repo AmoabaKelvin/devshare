@@ -64,7 +64,7 @@ export default function Home() {
       <section
         className={`flex flex-col p-24 mt-10 items-center justify-center w-full h-full gap-6 mx-auto max-w-6xl ${raleway.className}`}
       >
-        <Alert className="absolute bg-transparent border border-purple-300 top-4 right-4 px-7 w-max">
+        <Alert className="absolute hidden bg-transparent border border-purple-300 md:block top-4 right-4 px-7 w-max">
           <Terminal className="w-4 h-4" />
           <AlertTitle>Heads up!</AlertTitle>
           <AlertDescription>

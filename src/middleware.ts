@@ -1,11 +1,12 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { authMiddleware } from "@clerk/nextjs";
 
-export function middleware(request: NextRequest) {
-  // If base domain is app.devshare.dev, redirect to devshare.dev/app
-  if (request.nextUrl.hostname === "app.devshare.dev") {
-    return NextResponse.redirect(new URL("https://devshare.dev/app"), {
-      status: 301,
-    });
-  }
-}
+// This example protects all routes including api/trpc routes
+// Please edit this to allow other routes to be public as needed.
+// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
+export default authMiddleware({
+  publicRoutes: ["/", "/app", "/api/webhook"],
+});
+
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};

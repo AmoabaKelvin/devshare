@@ -19,29 +19,6 @@ import {
 import { languages } from "@/data/dummy";
 import { cn } from "@/lib/utils";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
-
 interface ComboBoxProps {
   onSelect: (language: string, value: string) => void;
 }
@@ -59,7 +36,7 @@ export function LanguageSelectionComboBox({ onSelect }: ComboBoxProps) {
           aria-expanded={open}
           className="w-[200px] bg-transparent justify-between text-white border-purple-400"
         >
-          {value || "Select framework"}
+          {value || "Select language"}
           <ChevronsUpDown className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>

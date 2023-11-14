@@ -64,146 +64,11 @@ export const languages = [
 export const snippets = [
   {
     author: {
-      name: "Kelvin Amoaba",
-      github: "AmoabaKelvin",
-      joined: "2023-10-01",
-    },
-    description: "Calculate age from a birthdate in JavaScript.",
-    code: `function calculateAge(birthdate) {
-  const today = new Date();
-  const birthDate = new Date(birthdate);
-  const age = today.getFullYear() - birthDate.getFullYear();
-  
-  if (today < new Date(today.setFullYear(birthDate.getFullYear()))) {
-    age--;
-  }
-  
-  return age;
-}
-    `,
-    language: "javascript",
-    tags: ["javascript", "age", "birthdate"],
-    date: "2022-01-15",
-  },
-  {
-    author: {
-      name: "Fiifi Amoah",
-      github: "An0n-xen",
-      joined: "2023-10-15",
-    },
-    description: "Automatically resize a textarea as you type.",
-    code: `const textarea = document.querySelector('textarea');
-textarea.addEventListener('input', function () {
-  this.style.height = 'auto';
-  this.style.height = (this.scrollHeight) + 'px';
-});`,
-    language: "javascript",
-    tags: ["javascript", "textarea", "auto-resize"],
-    date: "2021-10-12",
-  },
-  {
-    description:
-      "Function for generating slugs from a title and handling duplicates",
-    code: `const slugify = (title: string) => {
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/(^-|-$)+/g, '');
-  return slug;
-}`,
-    author: {
-      name: "Kelvin Amoaba",
-      github: "AmoabaKelvin",
-      joined: "2021-01-01",
-    },
-    language: "typescript",
-    tags: ["typescript", "slug", "slugify"],
-    date: "2021-01-01",
-  },
-  {
-    author: {
       name: "Elorm Dokosi",
       github: "elormcodes1",
-      joined: "2021-01-01",
     },
-    description: "Check if an input is a valid email address.",
-    code: `const isValidEmail = (email) => {
-  const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;
-  return pattern.test(email);
-}
-    `,
-    language: "javascript",
-    tags: ["javascript", "email", "validation"],
-    date: "2022-02-18",
-  },
-  {
-    description:
-      "Binary search implementation in Golang. Returns the index of the target if found, else -1",
-    code: `func binarySearch(arr []int, target int) int {
-    left := 0
-    right := len(arr) - 1
-
-    for left <= right {
-        mid := (left + right) / 2
-
-        if arr[mid] == target {
-            return mid
-        } else if arr[mid] < target {
-            left = mid + 1
-        } else {
-            right = mid - 1
-        }
-    }
-  
-    return -1
-}`,
-    author: {
-      name: "Kelvin Amoaba",
-      github: "AmoabaKelvin",
-      joined: "2021-01-01",
-    },
-    language: "Go",
-    tags: ["DSA", "search", "binary"],
-    date: "2021-01-01",
-  },
-  {
-    author: {
-      name: "Cynthia",
-      github: "ceen-cell",
-      joined: "2023-01-01",
-    },
-    description: "Function for generating a random number between two values",
-    code: `const getRandomNumber = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}`,
-    language: "typescript",
-    tags: ["typescript", "random", "number"],
-    date: "2021-01-02",
-  },
-  {
-    author: {
-      name: "Neil Ohene",
-      github: "dvc-77",
-      joined: "2021-01-01",
-    },
-    description: "Function for checking if a string is a palindrome",
-    code: `public static int factorial(int num) {
-    if (num == 0 || num == 1) {
-        return 1;
-    } else {
-        return num * factorial(num - 1);
-    }
-}`,
-    language: "Java",
-    tags: ["palindrome", "string"],
-    date: "2023-10-28",
-  },
-  {
-    author: {
-      name: "Elorm Dokosi",
-      github: "elormcodes1",
-      joined: "2021-01-01",
-    },
+    id: 1, // Add this line
+    userId: "user1", // Add this line
     description: "Function for calculating the factorial of a number",
     code: `const factorial = (num: number) => {
       if (num === 0 || num === 1) {
@@ -214,22 +79,8 @@ textarea.addEventListener('input', function () {
     }
     `,
     language: "typescript",
-    tags: ["typescript", "factorial", "number"],
-    date: "2021-01-04",
-  },
-  {
-    author: {
-      name: "Samuel",
-      github: "Halldean",
-      joined: "2021-01-01",
-    },
-    description: "Function for sorting an array of numbers in ascending order",
-    code: `const sortAscending = (arr: number[]) => {
-      return arr.sort((a, b) => a - b);
-    }
-    `,
-    language: "typescript",
-    tags: ["typescript", "sort", "array"],
-    date: "2021-01-05",
+    tags: "typescript, factorial, number", // Update this line
+    createdAt: new Date("2021-01-04"), // Add this line
+    updatedAt: new Date("2021-01-04"), // Add this line
   },
 ];
